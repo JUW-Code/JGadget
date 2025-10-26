@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>JGadget — Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">JGadget</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="signup.html">Account</a>
+      </nav>
+      <div class="header-actions">
+        <button id="cart-btn-2" class="icon-btn">🛒 <span id="cart-count-2" class="badge">0</span></button>
+        <button id="menu-toggle-2" class="icon-btn" aria-expanded="false" aria-controls="mobile-menu-2">☰</button>
+      </div>
+    </div>
+
+    <div id="mobile-menu-2" class="mobile-menu" hidden>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="signup.html">Account</a>
+    </div>
+  </header>
+
+  <section class="shop-hero">
+    <div class="shop-hero-inner container">
+      <h2>Give All You Need</h2>
+      <form class="shop-search" id="shop-search">
+        <input type="search" id="shop-search-input" placeholder="Search on JGadget">
+        <button type="submit" class="btn">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="shop-section">
+    <div class="shop-container container">
+      <div class="shop-content">
+        <aside class="shop-sidebar">
+          <h3>Category</h3>
+          <ul id="category-list">
+            <li><label><input type="radio" name="cat" value="all" checked> All Products</label></li>
+            <li><label><input type="radio" name="cat" value="home"> For Home</label></li>
+            <li><label><input type="radio" name="cat" value="music"> For Music</label></li>
+            <li><label><input type="radio" name="cat" value="phone"> For Phone</label></li>
+            <li><label><input type="radio" name="cat" value="storage"> For Storage</label></li>
+          </ul>
+        </aside>
+
+        <div class="product-grid" id="product-grid">
+          <!-- JS renders product cards -->
+        </div>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer container">
+    <div>© <strong>JGadget</strong> — Demo portfolio store</div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

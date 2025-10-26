@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>JGadget — Order</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">JGadget</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="signup.html">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container checkout-page">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+
+    <section class="checkout-form">
+      <h3>Order & Payment (demo)</h3>
+      <form id="checkout-form">
+        <div class="grid">
+          <input required name="name" placeholder="Full name" />
+          <input required name="email" type="email" placeholder="Email" />
+          <input required name="address" placeholder="Delivery address" />
+          <input required name="phone" placeholder="Phone number" />
+        </div>
+
+        <label>Payment method (demo)
+          <select name="payment" required>
+            <option value="card">Card (simulated)</option>
+            <option value="transfer">Bank Transfer (simulated)</option>
+          </select>
+        </label>
+
+        <button class="btn btn-primary" type="submit">Place Order</button>
+      </form>
+
+      <div id="order-result" class="order-result" hidden></div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <div>© <strong>JGadget</strong> — Demo portfolio store</div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

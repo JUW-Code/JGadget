@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>JGadget — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">JGadget</a>
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="signup.html">Account</a>
+      </nav>
+      <div class="header-actions"> 
+        <button id="cart-btn" class="icon-btn" title="Cart">🛒 <span id="cart-count" class="badge">0</span></button>
+        <button id="menu-toggle" class="icon-btn" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="signup.html">Account</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="overlay-text">Shop</span>
+    <div class="hero-content">
+      <h1>Discover Modern Gadgets</h1>
+      <p>Curated gadgets for home, work and music — minimal, modern and built for you.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="shop.html">Shop Now</a>
+        <a class="btn btn-ghost" href="#learn">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" id="learn">
+    <section class="intro-cards">
+      <div class="card">
+        <h3>Fast Shipping</h3>
+        <p>Shipped within 48 hours.</p>
+      </div>
+      <div class="card">
+        <h3>Secure (Demo)</h3>
+        <p>Checkout is simulated for portfolio demo.</p>
+      </div>
+      <div class="card">
+        <h3>Design Focused</h3>
+        <p>Minimal, modern, portfolio-ready.</p>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="newsletter-inner">
+        <h2>Ready to Get Our New Stuff?</h2>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="Your email" required>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+        <p class="muted">We'll never spam you. Demo only.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <div>© <strong>JGadget</strong> — Demo portfolio store</div>
+    <div class="socials">Made by Olajuuwon</div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
