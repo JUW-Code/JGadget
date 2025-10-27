@@ -1,4 +1,3 @@
-/* Demo product dataset (Unsplash images). Replace with local images if desired. */
 const PRODUCTS = [
   { id: 'p1', title:'Phone Holder Sakti', price:29.90, category:'phone', img:'https://i.pinimg.com/736x/df/1f/bd/df1fbdfdd652e87172fc51c467b2ca5d.jpg', rating:5.0 },
   { id: 'p2', title:'Headsound Headphones', price:129.00, category:'music', img:'https://i.pinimg.com/1200x/fa/07/64/fa076472b1d600d7cf29c2cf61a8acf5.jpg', rating:4.9 },
@@ -14,12 +13,9 @@ const PRODUCTS = [
   { id: 'p12', title:'Noise Cancelling Earbuds', price:75.00, category:'music', img:'https://i.pinimg.com/1200x/32/28/a6/3228a63c26a3992e3e0319ae6a072a21.jpg', rating:4.9 }
 ];
 
-
-/* Helper functions */
 function qs(sel){ return document.querySelector(sel); }
 function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
 
-/* Menu toggle for mobile */
 function initMenuToggle() {
   qsa('#menu-toggle, #menu-toggle-2, #menu-toggle-3').forEach(btn => {
     if(!btn) return;
@@ -33,7 +29,6 @@ function initMenuToggle() {
   });
 }
 
-/* CART (localStorage) */
 function getCart(){ return JSON.parse(localStorage.getItem('jg_cart') || '[]') }
 function saveCart(cart){ localStorage.setItem('jg_cart', JSON.stringify(cart)); updateCartCount(); }
 function addToCart(productId, qty=1){
@@ -51,7 +46,6 @@ function updateCartCount(){
   qsa('#cart-count, #cart-count-2, #cart-count-3').forEach(n => { if(n) n.textContent = count });
 }
 
-/* Render products (shop page) */
 function renderProducts(filter='all'){
   const grid = qs('#product-grid');
   if(!grid) return;
@@ -86,7 +80,6 @@ function renderProducts(filter='all'){
   });
 }
 
-/* Product page */
 function renderProductPage(){
   const el = qs('#product-page');
   if(!el) return;
@@ -123,7 +116,6 @@ function renderProductPage(){
   });
 }
 
-/* Render cart page */
 function renderCartPage(){
   const el = qs('#cart-items');
   if(!el) return;
@@ -155,7 +147,6 @@ function renderCartPage(){
   });
 }
 
-/* Checkout simulated */
 function initCheckout(){
   const form = qs('#checkout-form');
   if(!form) return;
@@ -175,17 +166,14 @@ function initCheckout(){
       },0)
     };
 
-    // Save order locally
     const orders = JSON.parse(localStorage.getItem('jg_orders') || '[]');
     orders.push(order);
     localStorage.setItem('jg_orders', JSON.stringify(orders));
 
-    // clear cart
     localStorage.removeItem('jg_cart');
     updateCartCount();
     renderCartPage();
 
-    // Show confirmation
     const result = qs('#order-result');
     if(result){
       result.hidden = false;
@@ -246,12 +234,10 @@ function initAuth(){
     });
   }
 
-  // show logout if session exists
   const session = localStorage.getItem('jg_session');
   if(session && logoutBtn) logoutBtn.style.display = 'inline-block';
 }
 
-/* Newsletter demo */
 function initNewsletter(){
   const f = qs('#newsletter-form');
   if(!f) return;
@@ -266,7 +252,6 @@ function initNewsletter(){
   });
 }
 
-/* Shop search */
 function initShopSearch(){
   const f = qs('#shop-search');
   if(!f) return;
@@ -296,7 +281,6 @@ function initShopSearch(){
   });
 }
 
-/* Wire header cart buttons to go to order page */
 function wireHeaderCartButtons(){
   qsa('#cart-btn,#cart-btn-2,#cart-btn-3').forEach(b=>{
     if(!b) return;
