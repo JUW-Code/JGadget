@@ -216,7 +216,7 @@ function initAuth(){
       if(!stored){ status.textContent = 'User not found.'; return; }
       const user = JSON.parse(stored);
       if(user.password !== pass){ status.textContent = 'Wrong password.'; return; }
-      // set session
+    
       localStorage.setItem('jg_session', JSON.stringify({ email: user.email, name: user.name }));
       status.textContent = `Logged in as ${user.name}.`;
       alert(`Welcome back, ${user.name}!`);
@@ -306,5 +306,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
     r.addEventListener('change', ()=> {
       renderProducts(r.value);
     });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+    mobileMenu.hidden = !isOpen;
   });
 });
