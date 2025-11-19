@@ -195,7 +195,6 @@ html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe 
     gap: 10px;
   }
 }
-/* ====== Mobile Menu Styling ====== */
 #menu-toggle {
   font-size: 1.4rem;
   background: transparent;
