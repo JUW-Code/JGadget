@@ -1,60 +1,96 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>JGadget — Account</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JGadget — Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo">JGadget</a>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="signup.html" class="active">Account</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container auth-page">
-    <section class="auth-forms">
-      <div class="card small">
-        <h3>Sign Up</h3>
-        <form id="signup-form">
-          <input name="name" placeholder="Full name" required /><br>
-          <br>
-          <input name="email" type="email" placeholder="Email" required /><br>
-          <br>
-          <input name="password" type="password" placeholder="Password" required /><br>
-          <br>
-          <button class="btn btn-primary" type="submit">Sign up</button>
-        </form>
-      </div>
-
-      <div class="card small">
-        <h3>Login</h3>
-        <form id="login-form">
-          <input name="email" type="email" placeholder="Email" required /><br>
-          <br>
-          <input name="password" type="password" placeholder="Password" required /><br>
-          <br>
-          <button class="btn" type="submit">Login</button>
-        </form>
-
-        <div id="auth-status" class="muted"></div>
-        <div style="margin-top:12px">
-          <button id="logout-btn" class="btn" style="display:none">Logout</button>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">JGadget</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="account.html">Account</a>
+            </nav>
         </div>
-      </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="site-footer container">
-    <div>© <strong>JGadget</strong> — Demo portfolio store</div>
-  </footer>
+    <main class="container auth-page">
+        <div style="max-width:400px;margin:0 auto">
+            <div class="card small">
+                <h1 style="text-align:center;margin-bottom:20px">Create Account</h1>
+                <p style="text-align:center;color:var(--muted);margin-bottom:24px">Join us to preorder exclusive
+                    gadgets.</p>
 
-  <script src="js/script.js" defer></script>
+                <form id="signup-form">
+                    <div style="margin-bottom:12px">
+                        <input type="text" name="name" placeholder="Full Name" required
+                            style="width:100%;padding:10px;margin-bottom:10px">
+                        <input type="email" name="email" placeholder="Email" required
+                            style="width:100%;padding:10px;margin-bottom:10px">
+                        <input type="password" name="password" placeholder="Password" required
+                            style="width:100%;padding:10px">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px">Sign Up</button>
+                </form>
+
+                <p style="text-align:center;margin-top:20px;font-size:0.9em">
+                    Already have an account? <a href="login.html"
+                        style="color:var(--primary);text-decoration:underline">Log in</a>
+                </p>
+                <div id="signup-message" style="margin-top:15px;color:green;text-align:center;" hidden></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo" style="display:block;margin-bottom:20px;color:#fff;">JGadget</a>
+                <p>Your premium destination for the latest flagship devices. Preorder today and be the first to
+                    experience the future.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="shop.html?cat=phone">Phones</a></li>
+                    <li><a href="shop.html?cat=accessories">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 JGadget Inc. All rights reserved.</div>
+            <div style="display:flex;gap:20px">
+                <a href="#" style="color:#888;text-decoration:none">Privacy</a>
+                <a href="#" style="color:#888;text-decoration:none">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js" defer></script>
 </body>
+
 </html>

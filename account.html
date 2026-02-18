@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JGadget — Account</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">JGadget</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="account.html" class="active">Account</a>
+            </nav>
+            <div class="header-actions">
+                <button id="cart-btn" class="icon-btn" title="Cart">🛒 <span id="cart-count"
+                        class="badge">0</span></button>
+                <button id="notification-btn" class="icon-btn" title="Notifications">🔔</button>
+                <button id="menu-toggle" class="icon-btn" aria-expanded="false" aria-controls="mobile-menu"
+                    aria-label="Toggle Menu">☰</button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu" hidden>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="account.html">Account</a>
+        </div>
+    </header>
+
+    <main class="container auth-page">
+        <div style="text-align:center;margin-bottom:40px">
+            <h1>My Account</h1>
+            <p id="auth-status" class="muted">Access your order history and profile.</p>
+            <button id="logout-btn" class="btn btn-ghost" style="display:none;margin-top:10px">Sign Out</button>
+        </div>
+
+        <div id="guest-content" style="text-align:center;">
+            <p class="muted" style="margin-bottom:30px">Please log in to view your account.</p>
+            <div style="display:flex;justify-content:center;gap:20px;">
+                <a href="login.html" class="btn btn-primary" style="width:150px">Log In</a>
+                <a href="signup.html" class="btn btn-ghost" style="width:150px">Sign Up</a>
+            </div>
+        </div>
+
+        <div id="account-content" hidden>
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+                    <div>
+                        <h2>Welcome, <span id="user-name-display">User</span>!</h2>
+                        <p class="muted" id="user-email-display">user@example.com</p>
+                    </div>
+                    <button id="logout-btn" class="btn btn-ghost">Sign Out</button>
+                </div>
+
+                <hr style="border:0;border-top:1px solid rgba(0,0,0,0.1);margin:20px 0">
+
+                <h3>Order History</h3>
+                <div class="table-container">
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-history-body">
+                            <!-- JS populates this -->
+                            <tr>
+                                <td colspan="5" style="text-align:center;padding:20px">No orders found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo" style="display:block;margin-bottom:20px;color:#fff;">JGadget</a>
+                <p>Your premium destination for the latest flagship devices. Preorder today and be the first to
+                    experience the future.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="shop.html?cat=phone">Phones</a></li>
+                    <li><a href="shop.html?cat=accessories">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 JGadget Inc. All rights reserved.</div>
+            <div style="display:flex;gap:20px">
+                <a href="#" style="color:#888;text-decoration:none">Privacy</a>
+                <a href="#" style="color:#888;text-decoration:none">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

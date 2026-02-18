@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>JGadget — Order</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -13,7 +15,7 @@
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
-        <a href="signup.html">Account</a>
+        <a href="account.html">Account</a>
       </nav>
     </div>
   </header>
@@ -23,33 +25,134 @@
     <div id="cart-items"></div>
 
     <section class="checkout-form">
-      <h3>Order & Payment (demo)</h3>
-      <form id="checkout-form">
-        <div class="grid">
-          <input required name="name" placeholder="Full name" />
-          <input required name="email" type="email" placeholder="Email" />
-          <input required name="address" placeholder="Delivery address" />
-          <input required name="phone" placeholder="Phone number" />
+      <h3>Preorder & Payment</h3>
+      <form id="checkout-form" class="order-card">
+        <div class="form-section">
+          <h4>Shipping Details</h4>
+          <div class="grid">
+            <input required name="name" placeholder="Full Name" class="input-lg" />
+            <input required name="email" type="email" placeholder="Email Address" class="input-lg" />
+          </div>
+          <div class="grid">
+            <input required name="address" placeholder="Shipping Address" class="input-lg" />
+            <input required name="phone" placeholder="Phone Number" class="input-lg" />
+          </div>
         </div>
 
-        <label>Payment method (demo)
-          <select name="payment" required>
-            <option value="card">Card (simulated)</option>
-            <option value="transfer">Bank Transfer (simulated)</option>
-          </select>
-        </label>
+        <div class="form-section">
+          <h4>Payment Method</h4>
+          <div class="grid">
+            <label>Payment Method</label>
+            <select name="payment" id="payment-method">
+              <option value="card">Credit/Debit Card</option>
+              <option value="transfer">Bank Transfer (Opay/Wema)</option>
+              <option value="delivery">Pay on Delivery</option>
+            </select>
+          </div>
 
-        <button class="btn btn-primary" type="submit">Place Order</button>
+          <div id="card-details" class="card-details">
+            <h4>Secure Card Payment</h4>
+            <div class="grid">
+              <input type="text" name="card_number" placeholder="Card Number" required>
+              <div style="display:flex;gap:10px">
+                <input type="text" name="expiry" placeholder="MM/YY" required>
+                <input type="text" name="cvc" placeholder="CVC" required>
+              </div>
+            </div>
+          </div>
+
+          <div id="bank-details" class="card-details" style="display:none;background:#f0fafe;border-color:#bae6fd">
+            <h4 style="color:#0369a1">Bank Transfer Instructions</h4>
+            <p style="margin-bottom:10px">Please transfer the total amount to one of the accounts below:</p>
+            <div style="background:#fff;padding:12px;border-radius:8px;margin-bottom:8px;border:1px solid #e0f2fe">
+              <strong>Opay / Paycom</strong><br>
+              Account Number: <span style="font-family:monospace;font-size:1.1em">8145678901</span><br>
+              Account Name: JGadget Stores
+            </div>
+            <div style="background:#fff;padding:12px;border-radius:8px;border:1px solid #e0f2fe">
+              <strong>Wema Bank / Alat</strong><br>
+              Account Number: <span style="font-family:monospace;font-size:1.1em">0234567890</span><br>
+              Account Name: JGadget Stores
+            </div>
+            <p style="margin-top:10px;font-size:0.9em;color:#0369a1"><em>Use your Order ID as the reference.</em></p>
+          </div>
+        </div>
+
+        <div class="btn-block">
+          <button class="btn btn-primary btn-xl" type="submit">Place Preorder</button>
+        </div>
       </form>
 
-      <div id="order-result" class="order-result" hidden></div>
+      <!-- Order Success Modal -->
+      <div id="order-modal" class="modal-overlay" hidden>
+        <div class="modal-content">
+          <div style="text-align:center">
+            <div class="check-icon">✓</div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you for your preorder.</p>
+          </div>
+
+          <div class="email-preview">
+            <h5>📧 Email Preview (Simulation)</h5>
+            <div id="email-preview-content">
+              <!-- JS populates -->
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:24px">
+            <p class="muted">A confirmation has been sent to your email.</p>
+            <a href="account.html" class="btn btn-primary">View Order</a>
+            <button id="close-modal" class="btn btn-ghost" style="margin-top:10px">Close</button>
+          </div>
+        </div>
+      </div>
+
     </section>
   </main>
 
-  <footer class="site-footer container">
-    <div>© <strong>JGadget</strong> — Demo portfolio store</div>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="display:block;margin-bottom:20px;color:#fff;">JGadget</a>
+        <p>Your premium destination for the latest flagship devices. Preorder today and be the first to experience the
+          future.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=phone">Phones</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Order Status</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 JGadget Inc. All rights reserved.</div>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="color:#888;text-decoration:none">Privacy</a>
+        <a href="#" style="color:#888;text-decoration:none">Terms</a>
+      </div>
+    </div>
   </footer>
 
   <script src="js/script.js" defer></script>
 </body>
+
 </html>

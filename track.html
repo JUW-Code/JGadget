@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JGadget — Track Order</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">JGadget</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="track.html" class="active">Track Order</a>
+                <a href="account.html">Account</a>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+        </div>
+        <div id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="track.html">Track Order</a>
+            <a href="account.html">Account</a>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 60px 0; min-height: 60vh;">
+        <div style="text-align:center; margin-bottom: 40px;">
+            <h1>Track Your Order</h1>
+            <p style="color:var(--text-muted)">Enter your Order ID to see real-time updates.</p>
+        </div>
+
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <form id="track-form" style="display:flex; gap:12px; margin-bottom: 40px;">
+                <input type="text" id="track-id" placeholder="e.g. ORD-123456" required style="flex:1">
+                <button type="submit" class="btn btn-primary">Track</button>
+            </form>
+
+            <div id="track-result" hidden>
+                <div class="order-summary"
+                    style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border);">
+                    <h3 id="track-order-id"></h3>
+                    <p id="track-order-status" class="badge"
+                        style="display:inline-block; font-size: 1rem; padding: 6px 16px; margin-top: 8px;"></p>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline">
+                    <div class="timeline-step" id="step-processing">
+                        <div class="step-icon">1</div>
+                        <div class="step-content">
+                            <h4>Processing</h4>
+                            <p>Order placed & confirmed</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step" id="step-shipping">
+                        <div class="step-icon">2</div>
+                        <div class="step-content">
+                            <h4>Intl. Shipping</h4>
+                            <p>In transit to Nigeria</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step" id="step-arrived">
+                        <div class="step-icon">3</div>
+                        <div class="step-content">
+                            <h4>Arrived in Nigeria</h4>
+                            <p>Customs cleared, at local sort center</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step" id="step-delivered">
+                        <div class="step-icon">4</div>
+                        <div class="step-content">
+                            <h4>Delivered</h4>
+                            <p>Package received</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="track-error" class="alert-box" hidden
+                style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">
+                Order not found. Please check your ID and try again.
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <!-- JS Injects Footer -->
+    </footer>
+
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

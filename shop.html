@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>JGadget — Shop</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -13,7 +15,7 @@
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="shop.html" class="active">Shop</a>
-        <a href="signup.html">Account</a>
+        <a href="account.html">Account</a>
       </nav>
       <div class="header-actions">
         <button id="cart-btn-2" class="icon-btn">🛒 <span id="cart-count-2" class="badge">0</span></button>
@@ -24,7 +26,7 @@
     <div id="mobile-menu-2" class="mobile-menu" hidden>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
-      <a href="signup.html">Account</a>
+      <a href="account.html">Account</a>
     </div>
   </header>
 
@@ -45,10 +47,10 @@
           <h3>Category</h3>
           <ul id="category-list">
             <li><label><input type="radio" name="cat" value="all" checked> All Products</label></li>
-            <li><label><input type="radio" name="cat" value="home"> For Home</label></li>
-            <li><label><input type="radio" name="cat" value="music"> For Music</label></li>
-            <li><label><input type="radio" name="cat" value="phone"> For Phone</label></li>
-            <li><label><input type="radio" name="cat" value="storage"> For Storage</label></li>
+            <li><label><input type="radio" name="cat" value="phone"> Phones</label></li>
+            <li><label><input type="radio" name="cat" value="audio"> Audio</label></li>
+            <li><label><input type="radio" name="cat" value="wearable"> Wearables</label></li>
+            <li><label><input type="radio" name="cat" value="accessories"> Accessories</label></li>
           </ul>
         </aside>
 
@@ -61,10 +63,49 @@
     </div>
   </section>
 
-  <footer class="site-footer container">
-    <div>© <strong>JGadget</strong> — Demo portfolio store</div>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="display:block;margin-bottom:20px;color:#fff;">JGadget</a>
+        <p>Your premium destination for the latest flagship devices. Preorder today and be the first to experience the
+          future.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=phone">Phones</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Order Status</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 JGadget Inc. All rights reserved.</div>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="color:#888;text-decoration:none">Privacy</a>
+        <a href="#" style="color:#888;text-decoration:none">Terms</a>
+      </div>
+    </div>
   </footer>
 
   <script src="js/script.js" defer></script>
 </body>
+
 </html>
