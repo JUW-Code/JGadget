@@ -1,26 +1,309 @@
+﻿// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+//  JGADGET PRODUCTS  |  Prices in Naira (â‚¦)
+//  Rate: $1 = â‚¦1,340  |  +â‚¦30,000 profit
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const PRODUCTS = [
-  // Phones
-  { id: 'p1', title: 'iPhone 16 Pro Max', price: 1199.00, category: 'phone', img: 'img/iphone16.png', rating: 5.0 },
-  { id: 'p2', title: 'iPhone 16 Pro', price: 999.00, category: 'phone', img: 'https://placehold.co/600x600/222/FFF?text=iPhone+16+Pro', rating: 4.9 },
-  { id: 'p3', title: 'iPhone 16', price: 799.00, category: 'phone', img: 'https://placehold.co/600x600/333/FFF?text=iPhone+16', rating: 4.8 },
-  { id: 'p4', title: 'Samsung S25 Ultra', price: 1299.00, category: 'phone', img: 'img/samsung25.png', rating: 4.9 },
-  { id: 'p5', title: 'Samsung S25 Plus', price: 999.00, category: 'phone', img: 'https://placehold.co/600x600/111/EEE?text=S25+Plus', rating: 4.7 },
-  { id: 'p6', title: 'Samsung S25', price: 799.00, category: 'phone', img: 'https://placehold.co/600x600/222/EEE?text=Samsung+S25', rating: 4.6 },
-  { id: 'p7', title: 'iPhone 15 Pro (Refurbished)', price: 899.00, category: 'phone', img: 'https://placehold.co/600x600/444/FFF?text=iPhone+15+Pro', rating: 4.5 },
-  { id: 'p8', title: 'Samsung Z Fold 6', price: 1799.00, category: 'phone', img: 'https://placehold.co/600x600/000/FFF?text=Z+Fold+6', rating: 4.8 },
-  // Audio
-  { id: 'a1', title: 'AirPods Pro 2', price: 249.00, category: 'audio', img: 'https://placehold.co/600x600/EEE/111?text=AirPods+Pro+2', rating: 4.8 },
-  { id: 'a2', title: 'Galaxy Buds 3 Pro', price: 229.00, category: 'audio', img: 'https://placehold.co/600x600/DDD/111?text=Galaxy+Buds+3', rating: 4.7 },
-  { id: 'a3', title: 'Sony WH-1000XM5', price: 349.00, category: 'audio', img: 'https://placehold.co/600x600/333/FFF?text=Sony+XM5', rating: 4.9 },
-  { id: 'a4', title: 'Bose QC Ultra', price: 379.00, category: 'audio', img: 'https://placehold.co/600x600/222/FFF?text=Bose+QC+Ultra', rating: 4.6 },
-  // Wearables
-  { id: 'w1', title: 'Apple Watch Ultra 2', price: 799.00, category: 'wearable', img: 'https://placehold.co/600x600/111/FFF?text=Watch+Ultra+2', rating: 4.9 },
-  { id: 'w2', title: 'Galaxy Watch 7', price: 299.00, category: 'wearable', img: 'https://placehold.co/600x600/EEE/111?text=Galaxy+Watch+7', rating: 4.7 },
-  { id: 'w3', title: 'Apple Watch Series 10', price: 399.00, category: 'wearable', img: 'https://placehold.co/600x600/DDD/111?text=Watch+Series+10', rating: 4.8 }
+
+  // â”€â”€ iPhone Series (X â†’ 16 Pro Max) â”€â”€â”€â”€â”€â”€
+  {
+    id: 'ip-x',
+    title: 'iPhone X',
+    subtitle: '64GB | Space Gray',
+    price: 123800,   // $70 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/0a0a0a/FFFFFF?text=iPhone+X',
+    badge: 'Budget Pick'
+  },
+  {
+    id: 'ip-xr',
+    title: 'iPhone XR',
+    subtitle: '64GB | Black',
+    price: 147920,   // $88 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/0a0a0a/FFFFFF?text=iPhone+XR',
+    badge: ''
+  },
+  {
+    id: 'ip-xs',
+    title: 'iPhone XS',
+    subtitle: '64GB | Silver',
+    price: 157300,   // $95 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/0a0a0a/FFFFFF?text=iPhone+XS',
+    badge: ''
+  },
+  {
+    id: 'ip-xs-max',
+    title: 'iPhone XS Max',
+    subtitle: '256GB | Gold',
+    price: 172040,   // $106 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/0a0a0a/FFFFFF?text=iPhone+XS+Max',
+    badge: ''
+  },
+  {
+    id: 'ip-11',
+    title: 'iPhone 11',
+    subtitle: '64GB | Black',
+    price: 204200,   // $130 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/0a0a0a/FFFFFF?text=iPhone+11',
+    badge: ''
+  },
+  {
+    id: 'ip-11-pro',
+    title: 'iPhone 11 Pro',
+    subtitle: '256GB | Midnight Green',
+    price: 271200,   // $180 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1a2e1a/FFFFFF?text=iPhone+11+Pro',
+    badge: ''
+  },
+  {
+    id: 'ip-11-pm',
+    title: 'iPhone 11 Pro Max',
+    subtitle: '256GB | Space Gray',
+    price: 334180,   // $227 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/111/FFFFFF?text=iPhone+11+Pro+Max',
+    badge: ''
+  },
+  {
+    id: 'ip-12',
+    title: 'iPhone 12',
+    subtitle: '128GB | Blue',
+    price: 269860,   // $179 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1a2040/FFFFFF?text=iPhone+12',
+    badge: ''
+  },
+  {
+    id: 'ip-12-pro',
+    title: 'iPhone 12 Pro',
+    subtitle: '256GB | Pacific Blue',
+    price: 351600,   // $240 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1a2040/FFFFFF?text=iPhone+12+Pro',
+    badge: ''
+  },
+  {
+    id: 'ip-12-pm',
+    title: 'iPhone 12 Pro Max',
+    subtitle: '256GB | Pacific Blue',
+    price: 415920,   // $288 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1a2040/FFFFFF?text=iPhone+12+Pro+Max',
+    badge: ''
+  },
+  {
+    id: 'ip-13',
+    title: 'iPhone 13',
+    subtitle: '128GB | Midnight',
+    price: 351600,   // $240 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/0a0a0a/FFFFFF?text=iPhone+13',
+    badge: 'Popular'
+  },
+  {
+    id: 'ip-13-pro',
+    title: 'iPhone 13 Pro',
+    subtitle: '256GB | Alpine Green',
+    price: 432000,   // $300 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1a3025/FFFFFF?text=iPhone+13+Pro',
+    badge: ''
+  },
+  {
+    id: 'ip-13-pm',
+    title: 'iPhone 13 Pro Max',
+    subtitle: '256GB | Sierra Blue',
+    price: 545900,   // $385 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/2a3a4a/FFFFFF?text=iPhone+13+Pro+Max',
+    badge: ''
+  },
+  {
+    id: 'ip-14',
+    title: 'iPhone 14',
+    subtitle: '128GB | Purple',
+    price: 432000,   // $300 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/2a1a3a/FFFFFF?text=iPhone+14',
+    badge: ''
+  },
+  {
+    id: 'ip-14-pro',
+    title: 'iPhone 14 Pro',
+    subtitle: '256GB | Deep Purple',
+    price: 594140,   // $421 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1e0a3a/FFFFFF?text=iPhone+14+Pro',
+    badge: ''
+  },
+  {
+    id: 'ip-14-pm',
+    title: 'iPhone 14 Pro Max',
+    subtitle: '256GB | Space Black',
+    price: 700000,   // $500 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/080808/FFFFFF?text=iPhone+14+Pro+Max',
+    badge: 'Best Value'
+  },
+  {
+    id: 'ip-15',
+    title: 'iPhone 15',
+    subtitle: '128GB | Pink',
+    price: 639700,   // $455 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/3a1a2a/FFFFFF?text=iPhone+15',
+    badge: ''
+  },
+  {
+    id: 'ip-15-pro',
+    title: 'iPhone 15 Pro',
+    subtitle: '256GB | Natural Titanium',
+    price: 825960,   // $594 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/2a2520/FFFFFF?text=iPhone+15+Pro',
+    badge: ''
+  },
+  {
+    id: 'ip-15-pm',
+    title: 'iPhone 15 Pro Max',
+    subtitle: '256GB | Blue Titanium',
+    price: 923780,   // $667 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1a2030/FFFFFF?text=iPhone+15+Pro+Max',
+    badge: 'Top Seller'
+  },
+  {
+    id: 'ip-16',
+    title: 'iPhone 16',
+    subtitle: '128GB | Ultramarine',
+    price: 963980,   // $697 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/1a2050/FFFFFF?text=iPhone+16',
+    badge: 'New'
+  },
+  {
+    id: 'ip-16-pro',
+    title: 'iPhone 16 Pro',
+    subtitle: '256GB | Desert Titanium',
+    price: 1288260,  // $939 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/3a3020/FFFFFF?text=iPhone+16+Pro',
+    badge: 'New'
+  },
+  {
+    id: 'ip-16-pm',
+    title: 'iPhone 16 Pro Max',
+    subtitle: '256GB | Natural Titanium',
+    price: 1638000,  // $1200 Ã— 1340 + 30k
+    category: 'iphone',
+    img: 'https://placehold.co/600x600/2a2520/FFFFFF?text=iPhone+16+Pro+Max',
+    badge: 'ðŸ”¥ Flagship'
+  },
+
+  // â”€â”€ Samsung Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    id: 'ss-s25u',
+    title: 'Samsung S25 Ultra',
+    subtitle: '256GB | Titanium Gray',
+    price: 1571000,  // ~$1150 Ã— 1340 + 30k
+    category: 'samsung',
+    img: 'https://placehold.co/600x600/0a0a0a/FFFFFF?text=S25+Ultra',
+    badge: 'ðŸ”¥ Flagship'
+  },
+  {
+    id: 'ss-s25p',
+    title: 'Samsung S25 Plus',
+    subtitle: '256GB | Navy',
+    price: 1084580,  // ~$787 Ã— 1340 + 30k
+    category: 'samsung',
+    img: 'https://placehold.co/600x600/0a1a3a/FFFFFF?text=S25+Plus',
+    badge: 'New'
+  },
+  {
+    id: 'ss-s25',
+    title: 'Samsung Galaxy S25',
+    subtitle: '128GB | Icy Blue',
+    price: 825960,   // ~$594 Ã— 1340 + 30k
+    category: 'samsung',
+    img: 'https://placehold.co/600x600/1a3040/FFFFFF?text=Galaxy+S25',
+    badge: ''
+  },
+  {
+    id: 'ss-fold6',
+    title: 'Samsung Z Fold 6',
+    subtitle: '256GB | Crafted Black',
+    price: 2140500,  // ~$1575 Ã— 1340 + 30k
+    category: 'samsung',
+    img: 'https://placehold.co/600x600/080808/FFFFFF?text=Z+Fold+6',
+    badge: 'Premium'
+  },
+
+  // â”€â”€ Audio â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    id: 'a1',
+    title: 'AirPods Pro 2',
+    subtitle: 'USB-C | White',
+    price: 310060,   // ~$209 Ã— 1340 + 30k
+    category: 'audio',
+    img: 'https://placehold.co/600x600/F0F0F0/111?text=AirPods+Pro+2',
+    badge: ''
+  },
+  {
+    id: 'a2',
+    title: 'Galaxy Buds 3 Pro',
+    subtitle: 'Silver',
+    price: 269860,   // ~$179 Ã— 1340 + 30k
+    category: 'audio',
+    img: 'https://placehold.co/600x600/DDD/111?text=Galaxy+Buds+3',
+    badge: ''
+  },
+  {
+    id: 'a3',
+    title: 'Sony WH-1000XM5',
+    subtitle: 'Wireless Noise Cancelling',
+    price: 432000,   // ~$300 Ã— 1340 + 30k
+    category: 'audio',
+    img: 'https://placehold.co/600x600/1a1a1a/FFFFFF?text=Sony+XM5',
+    badge: 'Best ANC'
+  },
+
+  // â”€â”€ Wearables â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    id: 'w1',
+    title: 'Apple Watch Ultra 2',
+    subtitle: 'Titanium | Ocean Band',
+    price: 923780,   // ~$667 Ã— 1340 + 30k
+    category: 'wearable',
+    img: 'https://placehold.co/600x600/2a2a2a/FFFFFF?text=Watch+Ultra+2',
+    badge: ''
+  },
+  {
+    id: 'w2',
+    title: 'Apple Watch Series 10',
+    subtitle: '46mm | Aluminum',
+    price: 557960,   // ~$394 Ã— 1340 + 30k
+    category: 'wearable',
+    img: 'https://placehold.co/600x600/1a1a1a/FFFFFF?text=Watch+Series+10',
+    badge: ''
+  },
+  {
+    id: 'w3',
+    title: 'Galaxy Watch 7',
+    subtitle: '44mm | Green',
+    price: 346240,   // ~$236 Ã— 1340 + 30k
+    category: 'wearable',
+    img: 'https://placehold.co/600x600/0a2010/FFFFFF?text=Galaxy+Watch+7',
+    badge: ''
+  }
 ];
 
 function qs(sel) { return document.querySelector(sel); }
 function qsa(sel) { return Array.from(document.querySelectorAll(sel)); }
+
 
 function initMenuToggle() {
   qsa('#menu-toggle, #menu-toggle-2, #menu-toggle-3').forEach(btn => {
@@ -52,18 +335,26 @@ function updateCartCount() {
   qsa('#cart-count, #cart-count-2, #cart-count-3').forEach(n => { if (n) n.textContent = count });
 }
 
+// Format price as Naira with commas
+function formatNaira(n) { return 'â‚¦' + n.toLocaleString('en-NG'); }
+
 function renderProducts(filter = 'all') {
   const grid = qs('#product-grid');
   if (!grid) return;
   grid.innerHTML = '';
   const items = PRODUCTS.filter(p => filter === 'all' ? true : p.category === filter);
+  if (items.length === 0) {
+    grid.innerHTML = '<p style="color:var(--text-muted);padding:40px 0;">No products in this category yet.</p>';
+    return;
+  }
   items.forEach(p => {
     const card = document.createElement('div'); card.className = 'product-card';
     card.innerHTML = `
-      <img src="${p.img}" alt="${p.title}">
+      ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+      <img src="${p.img}" alt="${p.title}" loading="lazy">
       <h4>${p.title}</h4>
-      <!-- Rating removed -->
-      <div class="price">$${p.price.toFixed(2)}</div>
+      ${p.subtitle ? `<p class="product-subtitle">${p.subtitle}</p>` : ''}
+      <div class="price">${formatNaira(p.price)}</div>
       <div class="card-actions">
         <div style="display:flex; gap:8px; align-items:center;">
           <input type="number" min="1" value="1" class="qty-input" id="qty-${p.id}">
@@ -103,11 +394,12 @@ function renderProductPage() {
     <div class="product-detail">
       <div><img src="${p.img}" alt="${p.title}"></div>
       <div class="product-meta">
+        ${p.badge ? `<span class="product-badge" style="display:inline-block;margin-bottom:12px">${p.badge}</span>` : ''}
         <h2>${p.title}</h2>
-        <p class="price">$${p.price.toFixed(2)}</p>
-        <!-- Rating Removed -->
-        <p class="muted">Category: ${p.category}</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, laborum!</p>
+        ${p.subtitle ? `<p style="color:var(--text-muted);margin:0 0 12px">${p.subtitle}</p>` : ''}
+        <p class="price" style="font-size:2rem;margin:0 0 20px">${formatNaira(p.price)}</p>
+        <p style="color:var(--text-muted);margin:0 0 8px">ðŸ“¦ Delivery: 14â€“21 days to Nigeria</p>
+        <p style="color:var(--text-muted);margin:0 0 24px">âœ… 100% Original &nbsp;|&nbsp; ðŸ”’ Secure Payment</p>
 
         <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
           <input type="number" min="1" value="1" class="qty-input" id="qty-single">
@@ -339,7 +631,7 @@ function initShopSearch() {
       card.innerHTML = `
         <img src="${p.img}" alt="${p.title}">
         <h4>${p.title}</h4>
-        <div class="rating">⭐ ${p.rating}</div>
+        <div class="rating">â­ ${p.rating}</div>
         <div class="price">$${p.price.toFixed(2)}</div>
         <div class="card-actions">
           <button class="btn add-cart" data-id="${p.id}">Add to Cart</button>
