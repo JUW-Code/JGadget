@@ -15,8 +15,15 @@
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
-        <a href="account.html">Account</a>
-      </nav>
+        <div class="header-actions">
+          <button id="cart-btn" class="icon-btn" title="Cart">🛒 <span id="cart-count" class="badge">0</span></button>
+          <button id="menu-toggle" class="icon-btn" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="account.html">Account</a>
     </div>
   </header>
 
@@ -46,7 +53,6 @@
             <select name="payment" id="payment-method">
               <option value="card">Credit/Debit Card</option>
               <option value="transfer">Bank Transfer (Opay/Wema)</option>
-              <option value="delivery">Pay on Delivery</option>
             </select>
           </div>
 

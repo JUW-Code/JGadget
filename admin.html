@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JGadget Admin — Confirm Payments</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body style="background:#050505; color:#fff;">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">JGadget Admin</a>
+        </div>
+    </header>
+    <main class="container" style="padding: 60px 0;">
+        <h2>Order Management</h2>
+        <div id="admin-orders-list" class="card" style="padding: 20px; background:#121212; border:1px solid #262626;">
+            <p>Loading orders...</p>
+        </div>
+    </main>
+    <script>
+        async function loadOrders() {
+            const list = document.getElementById('admin-orders-list');
+            try {
+                const res = await fetch('http://localhost:3000/api/orders');
+                const orders = await res.json();
+                if (orders.length === 0) {
+                    list.innerHTML = '<p>No orders yet.</p>';
+                    return;
+                }
+                list.innerHTML = `
+          <table style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr style="text-align:left; border-bottom:1px solid #262626;">
+                <th style="padding:10px;">ID</th>
+                <th style="padding:10px;">Customer</th>
+                <th style="padding:10px;">Total</th>
+                <th style="padding:10px;">Status</th>
+                <th style="padding:10px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${orders.map(o => `
+                <tr style="border-bottom:1px solid #262626;">
+                  <td style="padding:10px;">${o.id}</td>
+                  <td style="padding:10px;">${o.name} (${o.email})</td>
+                  <td style="padding:10px;">₦${o.total.toLocaleString()}</td>
+                  <td style="padding:10px;">${o.status}</td>
+                  <td style="padding:10px;">
+                    ${o.paymentConfirmed ? '<span style="color:#10b981;">Paid</span>' : `<button onclick="confirmPayment('${o.id}')" class="btn btn-primary" style="padding:5px 10px; font-size:0.8rem;">Confirm Payment</button>`}
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+            } catch (e) {
+                list.textContent = 'Error loading orders.';
+            }
+        }
+
+        async function confirmPayment(id) {
+            if (!confirm('Confirm payment for ' + id + '?')) return;
+            await fetch('http://localhost:3000/api/orders/' + id + '/confirm', { method: 'POST' });
+            loadOrders();
+        }
+
+        loadOrders();
+        setInterval(loadOrders, 5000); // Polling
+    </script>
+</body>
+
+</html>
