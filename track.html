@@ -20,7 +20,9 @@
         <a href="account.html">Account</a>
       </nav>
       <div class="header-actions">
-        <button id="cart-btn-3" class="icon-btn">🛒 <span id="cart-count-3" class="badge">0</span></button>
+        <button id="notif-btn-3" class="icon-btn" title="Notifications">🔔 <span id="notif-count-3"
+            class="badge">0</span></button>
+        <button id="cart-btn-3" class="icon-btn" title="Cart">🛒 <span id="cart-count-3" class="badge">0</span></button>
         <button id="menu-toggle-3" class="icon-btn" aria-expanded="false" aria-controls="mobile-menu-3">☰</button>
       </div>
     </div>
@@ -36,7 +38,8 @@
 
     <div style="text-align:center; margin-bottom: 48px;">
       <h1>Track Your Order</h1>
-      <p style="color:var(--text-muted);font-size:1.1rem">Enter your Order ID below to see real-time delivery updates.</p>
+      <p style="color:var(--text-muted);font-size:1.1rem">Enter your Order ID below to see real-time delivery updates.
+      </p>
     </div>
 
     <div class="card" style="max-width: 700px; margin: 0 auto; padding: 40px;">
@@ -58,17 +61,23 @@
             </div>
             <div style="text-align:right">
               <p style="color:var(--text-muted); font-size: 0.85rem; margin:0 0 6px">STATUS</p>
-              <span id="track-order-status" class="product-badge" style="position:static;font-size:0.9rem;padding:6px 16px"></span>
+              <span id="track-order-status" class="product-badge"
+                style="position:static;font-size:0.9rem;padding:6px 16px"></span>
             </div>
           </div>
-          <div id="track-order-details" style="margin-top:16px; color:var(--text-muted); font-size:0.9rem; display:flex; gap:24px; flex-wrap:wrap;"></div>
+          <div id="track-order-details"
+            style="margin-top:16px; color:var(--text-muted); font-size:0.9rem; display:flex; gap:24px; flex-wrap:wrap;">
+          </div>
         </div>
 
         <!-- Location Banner -->
-        <div id="location-banner" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:40px;display:flex;align-items:center;gap:16px;">
+        <div id="location-banner"
+          style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:40px;display:flex;align-items:center;gap:16px;">
           <div style="font-size:2rem" id="location-icon">📦</div>
           <div>
-            <p style="margin:0; font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Current Location</p>
+            <p
+              style="margin:0; font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
+              Current Location</p>
             <p id="location-text" style="margin:4px 0 0;font-size:1.05rem;font-weight:600;"></p>
             <p id="location-sub" style="margin:2px 0 0;color:var(--text-muted);font-size:0.85rem;"></p>
           </div>
@@ -117,7 +126,8 @@
             <div class="track-step-icon">📦</div>
             <div class="track-step-body">
               <h4>Lagos Sort Center</h4>
-              <p>Customs cleared! Your package is at our Lagos sort center and being prepared for last-mile delivery.</p>
+              <p>Customs cleared! Your package is at our Lagos sort center and being prepared for last-mile delivery.
+              </p>
               <span class="track-step-date" id="date-sort"></span>
             </div>
           </div>
@@ -143,7 +153,8 @@
         </div>
 
         <!-- Contact CTA -->
-        <div style="margin-top:40px; text-align:center; padding:24px; background:var(--surface); border:1px solid var(--border); border-radius:12px;">
+        <div
+          style="margin-top:40px; text-align:center; padding:24px; background:var(--surface); border:1px solid var(--border); border-radius:12px;">
           <p style="margin:0 0 12px; color:var(--text-muted);">Have questions about your order?</p>
           <a href="https://wa.me/2348113037077" target="_blank" class="btn btn-primary">💬 Chat on WhatsApp</a>
         </div>
@@ -151,8 +162,10 @@
       </div>
 
       <!-- Error -->
-      <div id="track-error" hidden style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:20px;color:#ef4444;text-align:center">
-        ❌ Order not found. Please check your Order ID and try again, or <a href="https://wa.me/2348113037077" style="color:#ef4444" target="_blank">contact us on WhatsApp</a>.
+      <div id="track-error" hidden
+        style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:20px;color:#ef4444;text-align:center">
+        ❌ Order not found. Please check your Order ID and try again, or <a href="https://wa.me/2348113037077"
+          style="color:#ef4444" target="_blank">contact us on WhatsApp</a>.
       </div>
 
     </div>
@@ -184,7 +197,7 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="https://wa.me/2348113037077" target="_blank">💬 WhatsApp</a></li>
-          <li><a href="mailto:onikosijuwon6@gmail.com">📧 Email</a></li>
+          <li><a href="mailto:jgadget563@gmail.com">📧 Email</a></li>
         </ul>
       </div>
     </div>
@@ -195,4 +208,5 @@
 
   <script src="js/script.js" defer></script>
 </body>
+
 </html>

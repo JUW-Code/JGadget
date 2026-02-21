@@ -171,6 +171,18 @@ function saveCart(cart) { localStorage.setItem('jg_cart', JSON.stringify(cart));
 function updateCartCount() {
   const count = getCart().reduce((s, i) => s + i.qty, 0);
   qsa('#cart-count, #cart-count-2, #cart-count-3').forEach(n => { if (n) n.textContent = count; });
+  qsa('#notif-count, #notif-count-2, #notif-count-3').forEach(n => { if (n) n.textContent = '0'; }); // Placeholder for notification count
+}
+
+function addToCart(id, qty) {
+  let cart = getCart();
+  const index = cart.findIndex(i => i.id === id);
+  if (index > -1) {
+    cart[index].qty += qty;
+  } else {
+    cart.push({ id, qty });
+  }
+  saveCart(cart);
 }
 
 function initMenuToggle() {
@@ -213,7 +225,8 @@ function renderFooter() {
         <h4>Contact</h4>
         <ul>
             <li><a href="https://wa.me/2348113037077" target="_blank">WhatsApp</a></li>
-            <li><a href="mailto:onikosijuwon6@gmail.com">Email</a></li>
+            <li><a href="mailto:jgadget563@gmail.com">Email</a></li>
+            <li><a href="admin.html" style="font-size:0.8rem;opacity:0.6">Admin Access</a></li>
         </ul>
       </div>
     </div>
@@ -429,8 +442,23 @@ function initTracking() {
           resultEl.hidden = false;
           qs('#track-order-id').textContent = order.id;
           qs('#track-order-status').textContent = order.status;
-          // Render 7-step timeline logic here if needed or just simple status
-          // (Keeping it consistent with track.html structure)
+
+          // Update timeline
+          const currentStatus = order.status;
+          let found = false;
+          TRACK_STEPS_CONFIG.forEach(step => {
+            const stepEl = document.getElementById(step.id);
+            if (!stepEl) return;
+            if (!found) {
+              stepEl.classList.add('active');
+              if (step.label === currentStatus) found = true;
+            } else {
+              stepEl.classList.remove('active');
+            }
+          });
+
+          // Update location text
+          if (qs('#location-text')) qs('#location-text').textContent = order.status === 'Delivered' ? 'Delivered' : 'In Transit';
         }
       });
   }
