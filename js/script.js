@@ -188,8 +188,9 @@ function addToCart(id, qty) {
 function initMenuToggle() {
   qsa('#menu-toggle, #menu-toggle-2, #menu-toggle-3').forEach(btn => {
     if (!btn) return;
-    const idSuffix = btn.id.split('-').pop(); // "", "2", etc
-    const menu = document.getElementById(idSuffix && idSuffix !== 'toggle' ? `mobile-menu-${idSuffix}` : 'mobile-menu');
+    // Extract numeric suffix: '' for 'menu-toggle', '2' for 'menu-toggle-2', '3' for 'menu-toggle-3'
+    const suffix = btn.id.replace('menu-toggle', '').replace('-', '');
+    const menu = document.getElementById(suffix ? `mobile-menu-${suffix}` : 'mobile-menu');
     btn.addEventListener('click', () => {
       const open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
@@ -309,7 +310,7 @@ function initAuth() {
   const signup = qs('#signup-form');
   const login = qs('#login-form');
   const status = qs('#auth-status');
-  const logoutBtn = qsa('#logout-btn');
+  const logoutBtn = qsa('#logout-btn, #logout-btn-inner');
   const signupMsg = qs('#signup-message');
 
   if (signup) {
@@ -374,6 +375,51 @@ function initAuth() {
 function initCheckout() {
   const form = qs('#checkout-form');
   if (!form) return;
+
+  // Display cart items in the cart summary area
+  function renderCartSummary() {
+    const cartEl = qs('#cart-items');
+    if (!cartEl) return;
+    const cart = getCart();
+    if (cart.length === 0) {
+      cartEl.innerHTML = '<p style="color:var(--muted);padding:20px 0">Your cart is empty. <a href="shop.html">Browse products</a></p>';
+      return;
+    }
+    const rows = cart.map(i => {
+      const p = PRODUCTS.find(x => x.id === i.id);
+      if (!p) return '';
+      return `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07)">
+        <span>${p.title} &times; ${i.qty}</span>
+        <span>${formatNaira(p.price * i.qty)}</span>
+      </div>`;
+    }).join('');
+    const total = cart.reduce((s, i) => { const p = PRODUCTS.find(x => x.id === i.id); return s + (p?.price * i.qty || 0); }, 0);
+    cartEl.innerHTML = rows + `<div style="display:flex;justify-content:space-between;padding:12px 0;font-weight:700"><span>Total</span><span>${formatNaira(total)}</span></div>`;
+  }
+  renderCartSummary();
+
+  function showOrderModal(order) {
+    const modal = qs('#order-modal');
+    const preview = qs('#email-preview-content');
+    if (modal) {
+      if (preview) {
+        preview.innerHTML = `
+          <p><strong>Order ID:</strong> ${order.id}</p>
+          <p><strong>Name:</strong> ${order.name}</p>
+          <p><strong>Total:</strong> ${formatNaira(order.total)}</p>
+          <p><strong>Status:</strong> ${order.status}</p>
+        `;
+      }
+      modal.hidden = false;
+    } else {
+      // Fallback if modal doesn't exist
+      alert('Order Placed! Your Order ID: ' + order.id);
+      window.location.href = 'account.html';
+    }
+    const closeBtn = qs('#close-modal');
+    if (closeBtn) closeBtn.addEventListener('click', () => { window.location.href = 'account.html'; });
+  }
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(form);
@@ -384,25 +430,28 @@ function initCheckout() {
       address: data.get('address'),
       phone: data.get('phone'),
       payment: data.get('payment'),
+      date: new Date().toLocaleDateString('en-NG'),
       total: getCart().reduce((s, i) => { const p = PRODUCTS.find(x => x.id === i.id); return s + (p?.price * i.qty || 0); }, 0),
       items: getCart(),
       status: 'Processing'
     };
 
-    // Save locally
+    // Always save locally first — this is the source of truth
     const orders = JSON.parse(localStorage.getItem('jg_orders') || '[]');
     orders.unshift(order);
     localStorage.setItem('jg_orders', JSON.stringify(orders));
+    localStorage.removeItem('jg_cart');
+    updateCartCount();
 
+    // Show success modal immediately (don't wait for server)
+    showOrderModal(order);
+
+    // Try to send to backend in background (best-effort)
     fetch('http://localhost:3000/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(order)
-    }).then(() => {
-      localStorage.removeItem('jg_cart');
-      alert('Order Placed! Check your email.');
-      window.location.href = 'account.html';
-    });
+    }).catch(() => { /* Server offline — order already saved locally */ });
   });
 }
 
@@ -422,44 +471,70 @@ function initTracking() {
   const input = qs('#track-id');
   if (!form && !btn) return;
 
+  function renderTrackResult(order) {
+    const resultEl = qs('#track-result');
+    const errorEl = qs('#track-error');
+    if (!order) {
+      if (resultEl) resultEl.hidden = true;
+      if (errorEl) errorEl.hidden = false;
+      return;
+    }
+    if (errorEl) errorEl.hidden = true;
+    if (resultEl) {
+      resultEl.hidden = false;
+      if (qs('#track-order-id')) qs('#track-order-id').textContent = order.id;
+      if (qs('#track-order-status')) qs('#track-order-status').textContent = order.status;
+
+      // Update timeline
+      const statusToStep = {
+        'Processing': 'step-confirmed',
+        'Sourcing & Packaging': 'step-sourcing',
+        'International Shipping': 'step-shipping',
+        'Nigeria Customs': 'step-customs',
+        'Lagos Sort Center': 'step-sort',
+        'Out for Delivery': 'step-delivery',
+        'Delivered': 'step-delivered'
+      };
+      const targetStep = statusToStep[order.status] || 'step-confirmed';
+      let reached = false;
+      TRACK_STEPS_CONFIG.forEach(step => {
+        const stepEl = document.getElementById(step.id);
+        if (!stepEl) return;
+        if (reached) {
+          stepEl.classList.remove('active');
+        } else {
+          stepEl.classList.add('active');
+          if (step.id === targetStep) reached = true;
+        }
+      });
+
+      if (qs('#location-text')) qs('#location-text').textContent = order.status === 'Delivered' ? 'Delivered' : 'In Transit';
+    }
+  }
+
   function handleTrack(ev) {
     if (ev) ev.preventDefault();
     const id = input.value.trim();
     if (!id) return;
 
+    // First check localStorage (works offline)
+    const localOrders = JSON.parse(localStorage.getItem('jg_orders') || '[]');
+    const localOrder = localOrders.find(o => o.id === id);
+
+    // Try backend first, fall back to localStorage
     fetch(`http://localhost:3000/api/orders/${id}`)
       .then(res => res.json())
       .then(order => {
-        const resultEl = qs('#track-result');
-        const errorEl = qs('#track-error');
         if (order.error) {
-          if (resultEl) resultEl.hidden = true;
-          if (errorEl) errorEl.hidden = false;
-          return;
+          // If server says not found, try localStorage
+          renderTrackResult(localOrder || null);
+        } else {
+          renderTrackResult(order);
         }
-        if (errorEl) errorEl.hidden = true;
-        if (resultEl) {
-          resultEl.hidden = false;
-          qs('#track-order-id').textContent = order.id;
-          qs('#track-order-status').textContent = order.status;
-
-          // Update timeline
-          const currentStatus = order.status;
-          let found = false;
-          TRACK_STEPS_CONFIG.forEach(step => {
-            const stepEl = document.getElementById(step.id);
-            if (!stepEl) return;
-            if (!found) {
-              stepEl.classList.add('active');
-              if (step.label === currentStatus) found = true;
-            } else {
-              stepEl.classList.remove('active');
-            }
-          });
-
-          // Update location text
-          if (qs('#location-text')) qs('#location-text').textContent = order.status === 'Delivered' ? 'Delivered' : 'In Transit';
-        }
+      })
+      .catch(() => {
+        // Server unreachable — use localStorage
+        renderTrackResult(localOrder || null);
       });
   }
 
